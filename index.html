@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Bus Finder</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; text-align: center; padding: 40px; }
+        .search-box { background: white; padding: 25px; border-radius: 12px; display: inline-block; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 350px; }
+        input { width: 90%; padding: 12px; margin-bottom: 20px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
+        .route-item { background: #e7f3ff; margin: 8px 0; padding: 10px; border-radius: 6px; display: none; color: #1877f2; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+    <div class="search-box">
+        <h2>📍 Find Your Bus</h2>
+        <input type="text" id="myInput" onkeyup="searchRoute()" placeholder="Type a destination (e.g. Airport)...">
+        
+        <div id="routeList">
+            <div class="route-item">Bus 101: Airport Express</div>
+            <div class="route-item">Bus 202: Central Railway Station</div>
+            <div class="route-item">Bus 305: Engineering College</div>
+            <div class="route-item">Bus 410: City Hospital</div>
+            <div class="route-item">Bus 500: Downtown Square</div>
+        </div>
+    </div>
+
+    <script>
+        function searchRoute() {
+            let input = document.getElementById('myInput').value.toLowerCase();
+            let routes = document.getElementsByClassName('route-item');
+            
+            for (let i = 0; i < routes.length; i++) {
+                if (input !== "" && routes[i].innerHTML.toLowerCase().includes(input)) {
+                    routes[i].style.display = "block";
+                } else {
+                    routes[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
